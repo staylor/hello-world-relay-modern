@@ -1,5 +1,5 @@
-
 import express from 'express';
+import proxy from 'http-proxy-middleware';
 import compression from 'compression';
 import path from 'path';
 import React from 'react';
@@ -20,6 +20,13 @@ app.use(compression());
 
 // Setup the public directory so that we can server static assets.
 app.use(express.static(path.join(process.cwd(), KYT.PUBLIC_DIR)));
+
+const gqlHost = 'http://localhost:8080';
+const gqlPath = '/graphql';
+app.use(gqlPath, proxy({
+  target: gqlHost,
+  changeOrigin: true,
+}));
 
 // Setup server side routing.
 app.get('*', (request, response) => {

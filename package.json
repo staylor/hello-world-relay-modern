@@ -11,6 +11,8 @@
     "express-graphql": "^0.6.4",
     "graphql": "^0.9.3",
     "graphql-relay": "^0.5.1",
+    "http-proxy-middleware": "^0.17.4",
+    "isomorphic-fetch": "^2.2.1",
     "kyt": "^0.5.4",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",

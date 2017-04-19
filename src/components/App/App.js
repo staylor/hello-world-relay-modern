@@ -1,8 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Route, Link } from 'react-router-dom';
-import Home from '../Home';
-import Tools from '../Tools';
+import Home from '../../containers/Home';
+import Tools from '../../routes/Tools';
 import styles from './App.scss';
 
 const App = () => (
