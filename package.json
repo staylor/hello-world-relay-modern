@@ -16,18 +16,23 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-helmet": "^5.0.3",
+    "react-relay": "dev",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
+    "babel-plugin-relay": "dev",
     "enzyme": "^2.8.2",
     "nodemon": "^1.11.0",
     "react-addons-test-utils": "^15.5.1",
-    "react-test-renderer": "^15.5.4"
+    "react-test-renderer": "^15.5.4",
+    "relay-compiler": "dev"
   },
   "scripts": {
     "dev": "kyt dev",
     "graphql-dev": "nodemon --exec babel-node src/graphql/server.js",
+    "updateSchema": "babel-node src/graphql/tools/updateSchema.js",
+    "relay": "relay-compiler --src ./src --schema src/graphql/schema.graphql",
     "build": "kyt build",
     "start": "node build/server/main.js",
     "proto": "kyt proto",

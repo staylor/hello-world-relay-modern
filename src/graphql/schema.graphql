@@ -1,0 +1,11 @@
+# Hello World object
+type HelloWorld {
+  # A message.
+  world: String
+}
+
+# Hello World queries
+type Query {
+  # Hello World.
+  hello: HelloWorld
+}

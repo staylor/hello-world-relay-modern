@@ -1,3 +1,6 @@
 {
-  "presets": ["kyt-react"]
+  "presets": ["kyt-react"],
+  "plugins": [
+    ["relay", {"schema": "src/graphql/schema.graphql"}]
+  ]
 }
