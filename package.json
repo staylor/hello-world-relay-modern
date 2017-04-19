@@ -1,0 +1,42 @@
+{
+  "name": "hello-world-relay-modern",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Scott Taylor <scott.c.taylor@mac.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-kyt-react": "0.2.0",
+    "compression": "1.6.2",
+    "express": "^4.15.2",
+    "express-graphql": "^0.6.4",
+    "graphql": "^0.9.3",
+    "graphql-relay": "^0.5.1",
+    "kyt": "^0.5.4",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-helmet": "^5.0.3",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1"
+  },
+  "devDependencies": {
+    "enzyme": "^2.8.2",
+    "nodemon": "^1.11.0",
+    "react-addons-test-utils": "^15.5.1",
+    "react-test-renderer": "^15.5.4"
+  },
+  "scripts": {
+    "dev": "kyt dev",
+    "graphql-dev": "nodemon --exec babel-node src/graphql/server.js",
+    "build": "kyt build",
+    "start": "node build/server/main.js",
+    "proto": "kyt proto",
+    "test": "kyt test",
+    "test-watch": "kyt test -- --watch",
+    "test-coverage": "kyt test -- --coverage",
+    "lint": "npm run lint-script && npm run lint-style",
+    "lint-script": "kyt lint-script",
+    "lint-style": "kyt lint-style",
+    "kyt:help": "kyt --help"
+  }
+}
