@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'react-relay';
-import withFragment from '../../../decorators/withFragment';
+import withFragment from 'decorators/withFragment';
 import styles from './Tool.scss';
 
 /* eslint-disable react/prefer-stateless-function */

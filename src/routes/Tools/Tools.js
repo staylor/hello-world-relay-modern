@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'react-relay';
 import GraphQL from 'decorators/GraphQL';
+import withFragment from 'decorators/withFragment';
 import ToolsQuery from 'queries/Tools';
 import Tool from './Tool';
 import styles from './Tools.scss';
@@ -10,13 +12,21 @@ import styles from './Tools.scss';
 /* eslint-disable no-underscore-dangle */
 
 @GraphQL(ToolsQuery)
+@withFragment(graphql`
+  fragment Toolset_tools on Tools {
+    toolset {
+      url
+      ...Tool_tool
+    }
+  }
+`)
 class Toolset extends Component {
   render() {
     const { tools: { toolset } } = this.props;
 
     return (
       <ul>
-        {toolset.map(tool => <Tool key={tool.__id} tool={tool} />)}
+        {toolset.map(tool => <Tool key={tool.url} tool={tool} />)}
       </ul>
     );
   }

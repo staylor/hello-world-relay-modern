@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule Tools_Query.graphql
- * @generated SignedSource<<0aae15aa62fc4120d63b314a5a5ef806>>
- * @relayHash b3fc17eea7870c0201fd28ae56553ead
+ * @generated SignedSource<<4ce3a36aab5c329eeba38b54fcd58175>>
+ * @relayHash 311704d9c06028e2b8535f6f1a163bfe
  * @flow
  * @nogrep
  */
@@ -21,9 +21,14 @@ import type {ConcreteBatch} from 'relay-runtime';
 /*
 query Tools_Query {
   tools {
-    toolset {
-      ...Tool_tool
-    }
+    ...Toolset_tools
+  }
+}
+
+fragment Toolset_tools on Tools {
+  toolset {
+    url
+    ...Tool_tool
   }
 }
 
@@ -50,20 +55,9 @@ const batch /*: ConcreteBatch*/ = {
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "Tool",
-            "name": "toolset",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "FragmentSpread",
-                "name": "Tool_tool",
-                "args": null
-              }
-            ],
-            "storageKey": null
+            "kind": "FragmentSpread",
+            "name": "Toolset_tools",
+            "args": null
           }
         ],
         "storageKey": null
@@ -98,6 +92,13 @@ const batch /*: ConcreteBatch*/ = {
             "plural": true,
             "selections": [
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "url",
+                "storageKey": null
+              },
+              {
                 "kind": "InlineFragment",
                 "type": "Tool",
                 "selections": [
@@ -114,13 +115,6 @@ const batch /*: ConcreteBatch*/ = {
                     "args": null,
                     "name": "summary",
                     "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "url",
-                    "storageKey": null
                   }
                 ]
               }
@@ -132,7 +126,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query Tools_Query {\n  tools {\n    toolset {\n      ...Tool_tool\n    }\n  }\n}\n\nfragment Tool_tool on Tool {\n  name\n  summary\n  url\n}\n"
+  "text": "query Tools_Query {\n  tools {\n    ...Toolset_tools\n  }\n}\n\nfragment Toolset_tools on Tools {\n  toolset {\n    url\n    ...Tool_tool\n  }\n}\n\nfragment Tool_tool on Tool {\n  name\n  summary\n  url\n}\n"
 };
 
 module.exports = batch;
