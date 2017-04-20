@@ -11,7 +11,7 @@ ${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}
 ${vo.cssBundle ? `<link rel="stylesheet" type="text/css" href="${vo.cssBundle}" />` : ''}
 </head>
 <body ${helmet.bodyAttributes.toString()}>
-<div id="root"><div>${vo.root}</div></div>
+<div id="root">${vo.root}</div>
 <script src="${vo.jsBundle}"></script>
 </body>
 </html>`;
