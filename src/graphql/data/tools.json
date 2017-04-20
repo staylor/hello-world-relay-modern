@@ -1,0 +1,7 @@
+[
+  {"name": "Express", "summary": "server-side rendering", "url": "https://expressjs.com/"},
+  {"name": "React", "summary": "component library", "url": "https://facebook.github.io/react/"},
+  {"name": "React Router", "summary": "server and browser routing", "url": "https://github.com/ReactTraining/react-router"},
+  {"name": "CSS Modules", "summary": "CSS Modules with a Sass pre-processor for styles", "url": "https://github.com/css-modules/css-modules"},
+  {"name": "Enzyme", "summary": "React component testing", "url": "https://github.com/airbnb/enzyme"}
+]

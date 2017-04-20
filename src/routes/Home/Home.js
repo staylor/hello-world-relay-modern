@@ -1,38 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import {
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
+import { graphql } from 'react-relay';
+import GraphQL from 'decorators/GraphQL';
+import withFragment from 'decorators/withFragment';
+import HomeQuery from 'queries/Home';
 import styles from './Home.scss';
 
-const Home = ({ hello }) => (
-  <section>
-    <Helmet>
-      <title>Home</title>
-    </Helmet>
-    <p className={styles.paragraph}>
-      Welcome to the <strong>Relay Modern</strong>.
-    </p>
-    <p className={styles.paragraph}>
-      {hello.world}
-    </p>
-  </section>
-);
+/* eslint-disable react/prefer-stateless-function */
 
-Home.propTypes = {
-  hello: PropTypes.shape({
-    world: PropTypes.string.isRequired,
-  }).isRequired,
-};
+@GraphQL(HomeQuery)
+@withFragment(graphql`
+  fragment Home_hello on HelloWorld {
+    world
+  }
+`)
+class HomeResponse extends Component {
+  static propTypes = {
+    hello: PropTypes.shape({
+      world: PropTypes.string.isRequired,
+    }).isRequired,
+  };
 
-export default createFragmentContainer(Home, {
-  fragments: {
-    hello: graphql`
-      fragment Home_hello on HelloWorld {
-        world
-      }
-    `,
-  },
-});
+  render() {
+    const { hello } = this.props;
+    return (
+      <p className={styles.paragraph}>
+        {hello.world}
+      </p>
+    );
+  }
+}
+
+export default function Home() {
+  return (
+    <section>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
+      <p className={styles.paragraph}>
+        Welcome to <strong>Relay Modern</strong>.
+      </p>
+      <HomeResponse />
+    </section>
+  );
+}

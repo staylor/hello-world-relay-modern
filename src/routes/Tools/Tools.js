@@ -1,30 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
+import GraphQL from 'decorators/GraphQL';
+import ToolsQuery from 'queries/Tools';
+import Tool from './Tool';
 import styles from './Tools.scss';
 
-const Tools = () => (
-  <section>
-    <Helmet>
-      <title>Tools</title>
-    </Helmet>
-    <ul>
-      <li className={styles.tool}>
-        <a href="https://expressjs.com/">Express</a> - server-side rendering
-      </li>
-      <li className={styles.tool}>
-        <a href="https://facebook.github.io/react/">React</a> - component library
-      </li>
-      <li className={styles.tool}>
-        <a href="https://github.com/ReactTraining/react-router">React Router</a> - server and browser routing
-      </li>
-      <li className={styles.tool}>
-        <a href="https://github.com/css-modules/css-modules">Sass Modules</a> - CSS Modules with a Sass pre-processor for styles
-      </li>
-      <li className={styles.tool}>
-        <a href="https://github.com/airbnb/enzyme">Enzyme</a> - React component testing
-      </li>
-    </ul>
-  </section>
-);
+/* eslint-disable react/prop-types */
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable no-underscore-dangle */
 
-export default Tools;
+@GraphQL(ToolsQuery)
+class Toolset extends Component {
+  render() {
+    const { tools: { toolset } } = this.props;
+
+    return (
+      <ul>
+        {toolset.map(tool => <Tool key={tool.__id} tool={tool} />)}
+      </ul>
+    );
+  }
+}
+
+export default function Tools() {
+  return (
+    <section>
+      <Helmet>
+        <title>Tools</title>
+      </Helmet>
+      <p className={styles.paragraph}>Tools response from GraphQL:</p>
+      <Toolset />
+    </section>
+  );
+}

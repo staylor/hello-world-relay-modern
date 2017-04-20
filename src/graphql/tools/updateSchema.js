@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { graphql } from 'graphql';
 import { introspectionQuery, printSchema } from 'graphql/utilities';
-import Schema from '../schema';
+import Schema from '../schema/';
 
 /* eslint-disable no-console */
 

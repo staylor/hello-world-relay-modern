@@ -5,6 +5,7 @@ import path from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
+import morgan from 'morgan';
 import template from './template';
 import App from '../components/App';
 
@@ -17,6 +18,8 @@ app.disable('x-powered-by');
 
 // Compress (gzip) assets in production.
 app.use(compression());
+
+app.use(morgan('combined'));
 
 // Setup the public directory so that we can server static assets.
 app.use(express.static(path.join(process.cwd(), KYT.PUBLIC_DIR)));

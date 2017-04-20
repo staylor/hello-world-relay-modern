@@ -1,4 +1,4 @@
-import 'isomorphic-fetch';
+import fetch from 'fbjs/lib/fetch';
 import {
   Environment,
   Network,
@@ -6,15 +6,24 @@ import {
   Store,
 } from 'relay-runtime';
 
-function fetchQuery(
+async function fetchQuery(
   operation,
   variables
 ) {
-  const encodedVars = JSON.stringify(variables);
-
-  return fetch(`/graphql?query=${operation.text}&variables=${encodedVars}`, {
+  const response = await fetch('http://localhost:3000/graphql', {
     method: 'POST',
-  }).then(response => response.json());
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: operation.text,
+      variables,
+    }),
+  })
+  // eslint-disable-next-line no-console
+  .catch(e => console.log(e));
+  return response.json();
 }
 
 const network = Network.create(fetchQuery);

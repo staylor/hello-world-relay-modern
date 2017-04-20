@@ -1,9 +1,8 @@
 import express from 'express';
 import graphQLHTTP from 'express-graphql';
-import Schema from './schema';
+import bodyParser from 'body-parser';
+import Schema from './schema/';
 
-const GRAPHQL_PORT = 8080;
-const app = express();
 const graphQLServer = graphQLHTTP(req => ({
   graphiql: true,
   schema: Schema,
@@ -12,8 +11,11 @@ const graphQLServer = graphQLHTTP(req => ({
   },
 }));
 
+const app = express();
+app.use(bodyParser.json());
 app.use('/graphql', graphQLServer);
 
+const GRAPHQL_PORT = 8080;
 const server = app.listen(GRAPHQL_PORT, () => {
   const { address, port } = server.address();
   // eslint-disable-next-line no-console

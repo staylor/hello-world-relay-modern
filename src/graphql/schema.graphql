@@ -8,4 +8,25 @@ type HelloWorld {
 type Query {
   # Hello World.
   hello: HelloWorld
+
+  # Tools.
+  tools: Tools
+}
+
+# Information about a tool.
+type Tool {
+  # Tool name.
+  name: String
+
+  # Summary of the tool.
+  summary: String
+
+  # Tool URL.
+  url: String
+}
+
+# Tools used to build this example.
+type Tools {
+  # A list of tools.
+  toolset: [Tool]
 }

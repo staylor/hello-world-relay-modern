@@ -3,10 +3,17 @@
     "eslint-config-kyt"
   ],
 
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  },
+
   "env": {
   },
 
   "plugins": [
+    "import"
   ],
 
   "rules": {

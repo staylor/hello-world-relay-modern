@@ -1,6 +1,16 @@
 {
-  "presets": ["kyt-react"],
+  "presets": ["kyt-react", "stage-0"],
   "plugins": [
-    "relay"
+    "transform-decorators-legacy",
+    ["relay", {"compat": true, "schema": "./src/graphql/schema.graphql"}],
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "queries": "./src/queries",
+        "decorators": "./src/decorators",
+        "routes": "./src/routes",
+        "components": "./src/components"
+      }
+    }]
   ]
 }
