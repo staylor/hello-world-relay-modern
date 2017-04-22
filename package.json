@@ -29,6 +29,7 @@
     "babel-plugin-relay": "dev",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
     "enzyme": "^2.8.2",
     "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-import": "^2.2.0",
@@ -39,7 +40,7 @@
   },
   "scripts": {
     "dev": "kyt dev",
-    "graphql-dev": "nodemon --watch src/graphql --exec babel-node src/graphql/server.js",
+    "graphql-dev": "nodemon --watch src/graphql --exec node src/graphql/index.js",
     "updateSchema": "babel-node src/graphql/tools/updateSchema.js",
     "relay": "relay-compiler --src ./src --schema src/graphql/schema.graphql",
     "build": "kyt build",
